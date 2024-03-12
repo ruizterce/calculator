@@ -19,25 +19,41 @@ function divide(a, b) {
         return alert('Dont divide by 0 or the world will colapse!');
     } else {
         return a / b;
-    }
+    };
 };
 
 function operate(a, o, b) {
     switch (o) {
         case "+":
-            return add(a,b);
+            return add(a, b);
         case "-":
-            return subtract(a,b);
+            return subtract(a, b);
         case "*":
-            return multiply(a,b);
+            return multiply(a, b);
         case "/":
-            return divide(a,b);
-    }
+            return divide(a, b);
+    };
 
 };
 
+const display = document.querySelector('#display');
+let displayContent = "";
 
-console.log(operate(1,"+",2))
-console.log(operate(1,"-",2))
-console.log(operate(1,"*",2))
-console.log(operate(1,"/",2))
+function addToDisplay(a) {
+    displayContent += a;
+    display.textContent = displayContent;
+};
+
+const numbers = document.querySelector('#numbers');
+numbers.addEventListener('click', (e) => {
+    if (e.target.className === 'number') {
+        addToDisplay(e.target.textContent);
+    };
+
+});
+
+
+console.log(operate(1, "+", 2))
+console.log(operate(1, "-", 2))
+console.log(operate(1, "*", 2))
+console.log(operate(1, "/", 2))
