@@ -122,6 +122,9 @@ numbers.addEventListener('click', (e) => {
 const operators = document.querySelector('#operators');
 operators.addEventListener('click', (e) => {
     if (e.target.className === 'operator') {
+        if (firstNumber === '') {
+            return;
+        }
         let operatorToUse = e.target.textContent;
         clearDisplayLine2();
         addToDisplayLine2(operatorToUse);
