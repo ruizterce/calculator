@@ -1,8 +1,7 @@
 let firstNumber = '';
 let secondNumber = '';
-let operator;
+let operator = '';
 let operatorSelected = false;
-let operationDone = false;
 
 function add(a, b) {
     return a + b;
@@ -39,27 +38,44 @@ function operate(a, o, b) {
 
 };
 
-const display = document.querySelector('#display');
-let displayContent = '';
+const displayLine1 = document.querySelector('#displayLine1');
+let displayLine1Content = '';
+const displayLine2 = document.querySelector('#displayLine2');
+let displayLine2Content = '';
 
-function addToDisplay(a) {
-    displayContent += a;
-    display.textContent = displayContent;
+function addToDisplayLine1(a) {
+    displayLine1Content += a;
+    displayLine1.textContent = displayLine1Content;
+};
+function addToDisplayLine2(a) {
+    displayLine2Content += a;
+    displayLine2.textContent = displayLine2Content;
 };
 
-function clearDisplay() {
-    displayContent = '';
-    display.textContent = displayContent;
+
+function clearDisplayLine1() {
+    displayLine1Content = '';
+    displayLine1.textContent = displayLine1Content;
+};
+
+function clearDisplayLine2() {
+    displayLine2Content = '';
+    displayLine2.textContent = displayLine2Content;
 };
 
 function reset() {
-    clearDisplay();
+    clearDisplayLine1();
+    clearDisplayLine2();
     firstNumber = '';
     secondNumber = '';
-    operator;
+    operator = '';
     operatorSelected = false;
-    operationDone = false;
 };
+
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', ()=>{
+    reset();
+});
 
 
 //Add numbers to display and store them to operate
@@ -67,18 +83,15 @@ const numbers = document.querySelector('#numbers');
 numbers.addEventListener('click', (e) => {
     if (e.target.className === 'number') {
 
-        if (operationDone) {
-            clearDisplay();
-
-            operationDone = false;
-        }
 
         let numberToAdd = e.target.textContent;
-        addToDisplay(numberToAdd);
+        
         if (!operatorSelected) {
             firstNumber += numberToAdd;
+            addToDisplayLine1(numberToAdd);
         } else {
             secondNumber += numberToAdd;
+            addToDisplayLine2(numberToAdd);
         };
 
     };
@@ -89,8 +102,8 @@ const operators = document.querySelector('#operators');
 operators.addEventListener('click', (e) => {
     if (e.target.className === 'operator') {
         let operatorToUse = e.target.textContent;
-        clearDisplay();
-        addToDisplay(operatorToUse);
+        clearDisplayLine2();
+        addToDisplayLine2(operatorToUse);
         operator = operatorToUse;
         operatorSelected = true;
     };
@@ -102,13 +115,13 @@ equals.addEventListener('click', (e) => {
     if (firstNumber != '' && secondNumber != '' && operatorSelected) {
         let result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
         if (result) {
-            clearDisplay();
-            addToDisplay('=' + result);
+            clearDisplayLine1();
+            clearDisplayLine2();
+            addToDisplayLine1('=' + result);
             firstNumber = result;
             secondNumber = '';
             operator = '';
             operatorSelected = false;
-            operationDone = true;
         }
     }
 });
