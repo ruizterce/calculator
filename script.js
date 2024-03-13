@@ -88,6 +88,9 @@ numbers.addEventListener('click', (e) => {
 
 
         if (!operatorSelected) {
+            if (displayLine1Content.includes('=')) {
+                reset();
+            };
 
             if (numberToAdd === '.') {
                 if (firstNumber === '') {
