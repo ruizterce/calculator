@@ -73,7 +73,7 @@ function reset() {
 };
 
 const clear = document.querySelector('#clear');
-clear.addEventListener('click', ()=>{
+clear.addEventListener('click', () => {
     reset();
 });
 
@@ -85,11 +85,29 @@ numbers.addEventListener('click', (e) => {
 
 
         let numberToAdd = e.target.textContent;
-        
+
+
         if (!operatorSelected) {
+
+            if (numberToAdd === '.') {
+                if (firstNumber === '') {
+                    firstNumber += '0';
+                    addToDisplayLine1('0');
+                } else if (firstNumber.includes('.')) {
+                    return;
+                }
+            };
             firstNumber += numberToAdd;
             addToDisplayLine1(numberToAdd);
         } else {
+            if (numberToAdd === '.') {
+                if (secondNumber === '') {
+                    secondNumber += '0';
+                    addToDisplayLine2('0');
+                } else if (secondNumber.includes('.')) {
+                    return;
+                }
+            };
             secondNumber += numberToAdd;
             addToDisplayLine2(numberToAdd);
         };
