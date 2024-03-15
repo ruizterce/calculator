@@ -43,7 +43,7 @@
 
 #displayWrapper {
     box-sizing: border-box;
-    margin: 64px 32px;
+    margin: 46px 32px 8px;
     border-right: 3px solid grey;
     background-color: grey;
     box-shadow: grey 0 -3px 0 10px;
@@ -68,6 +68,19 @@
     box-shadow:
         #00000093 3px -3px 0 3px;
 
+}
+
+#brand {
+    margin: 8px 24px 24px;
+    color: white;
+        font-family: "Notable", sans-serif;
+        font-size:16px;
+        font-weight: 400;
+        font-style: normal;
+}
+
+#brand span {
+    font-size: 12px;
 }
 
 
