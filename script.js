@@ -118,8 +118,11 @@ numbers.addEventListener('click', (e) => {
                     return;
                 }
             };
-            firstNumber += numberToAdd;
-            addToDisplayLine1(numberToAdd);
+
+            if (firstNumber.length < 13) {
+                firstNumber += numberToAdd;
+                addToDisplayLine1(numberToAdd);
+            }
         } else {
             if (numberToAdd === '.') {
                 if (secondNumber === '') {
@@ -129,8 +132,11 @@ numbers.addEventListener('click', (e) => {
                     return;
                 }
             };
-            secondNumber += numberToAdd;
-            addToDisplayLine2(numberToAdd);
+
+            if (secondNumber.length < 13) {
+                secondNumber += numberToAdd;
+                addToDisplayLine2(numberToAdd);
+            }
         };
         new Audio('/click.wav').play();
     };
@@ -160,8 +166,15 @@ equals.addEventListener('click', (e) => {
         if (result) {
             clearDisplayLine1();
             clearDisplayLine2();
-            addToDisplayLine1('=' + result);
-            firstNumber = result;
+
+
+            if (result.toString().length > 13) {
+                addToDisplayLine1('Err');
+                firstNumber = '';
+            } else {
+                addToDisplayLine1('=' + result);
+                firstNumber = result;
+            };
             secondNumber = '';
             operator = '';
             operatorSelected = false;
