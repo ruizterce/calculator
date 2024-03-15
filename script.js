@@ -78,15 +78,15 @@ allClear.addEventListener('click', () => {
     reset();
 });
 
-function clearLine () {
+function clearLine() {
     if (!operatorSelected) {
         clearDisplayLine1();
-        firstNumber='';
+        firstNumber = '';
     } else {
         clearDisplayLine2();
-        secondNumber='';
-        operator=''
-        operatorSelected=false;
+        secondNumber = '';
+        operator = ''
+        operatorSelected = false;
     }
 }
 
@@ -132,9 +132,9 @@ numbers.addEventListener('click', (e) => {
             secondNumber += numberToAdd;
             addToDisplayLine2(numberToAdd);
         };
-
+        new Audio('/click.wav').play();
     };
-    new Audio('/click.wav').play();
+
 });
 
 //Show operator on display and store it to operate
