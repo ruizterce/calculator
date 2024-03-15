@@ -174,6 +174,7 @@ const equals = document.querySelector('#equals');
 equals.addEventListener('click', (e) => {
     if (firstNumber != '' && secondNumber != '' && operatorSelected) {
         let result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
+        result = Math.round(result * 1000) / 1000
         if (result) {
             clearDisplayLine1();
             clearDisplayLine2();
