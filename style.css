@@ -5,9 +5,13 @@ body {
         linear-gradient(90deg, transparent 2%, rgba(255, 255, 255, 0.1) 3%, rgba(255, 255, 255, 0.1) 97%, transparent 98%),
         linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
     background-size: 30px 30px;
+
+    display:flex;
+    justify-content:space-around;
 }
 
 #container {
+    flex-shrink:0;
     background-color: rgb(209, 209, 209);
     width: 400px;
     display: flex;
@@ -43,8 +47,7 @@ body {
     content: '';
     position: absolute;
     top: -100%;
-    left: -100%;
-    width: 200%;
+    width: 100%;
     height: 200%;
     background: linear-gradient(45deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0) 90%);
     pointer-events: none;
