@@ -38,6 +38,7 @@ function operate(a, o, b) {
 
 };
 
+//Populate and clear display functions
 const displayLine1 = document.querySelector('#displayLine1');
 let displayLine1Content = '';
 const displayLine2 = document.querySelector('#displayLine2');
@@ -72,9 +73,26 @@ function reset() {
     operatorSelected = false;
 };
 
+const allClear = document.querySelector('#allClear');
+allClear.addEventListener('click', () => {
+    reset();
+});
+
+function clearLine () {
+    if (!operatorSelected) {
+        clearDisplayLine1();
+        firstNumber='';
+    } else {
+        clearDisplayLine2();
+        secondNumber='';
+        operator=''
+        operatorSelected=false;
+    }
+}
+
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    reset();
+    clearLine();
 });
 
 
@@ -116,6 +134,7 @@ numbers.addEventListener('click', (e) => {
         };
 
     };
+    new Audio('/click.wav').play();
 });
 
 //Show operator on display and store it to operate
