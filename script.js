@@ -45,6 +45,10 @@ const displayLine2 = document.querySelector('#displayLine2');
 let displayLine2Content = '';
 
 function addToDisplayLine1(a) {
+    if (displayLine1.textContent === 'Err') {
+        reset();
+    };
+
     displayLine1Content += a;
     displayLine1.textContent = displayLine1Content;
 };
